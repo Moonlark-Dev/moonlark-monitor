@@ -18,10 +18,21 @@
             <li v-for="(message, msgIndex) in history.messages" :key="msgIndex">
               <span class="badge bg-info">{{ message.role.toUpperCase() }}</span>
               <div v-if="['system', 'user'].includes(message.role)">
-                <span v-for="(line, lineno) in message.content.split('\n')" :key="lineno">
-                  <br v-if="lineno !== 0" />
-                  {{ line }}
-                </span>
+                <div v-if="typeof message.content === 'string'">
+                  <span v-for="(line, lineno) in message.content.split('\n')" :key="lineno" >
+                    <br v-if="lineno !== 0" />
+                    {{ line }}
+                  </span>
+                </div>
+                <div v-else>
+                  <div v-for="(segment, segment_index) in message.content" :key="segment">
+                    <img v-if="segment.type === 'image_url'" :src="segment.image_url.url" width="100%"/>
+                    <span v-for="(line, lineno) in segment.text" v-if="segment.type === 'text'" :key="lineno" >
+                      <br v-if="lineno !== 0" />
+                      {{ line }}
+                    </span>
+                  </div>
+                </div>
               </div>
               <div v-else-if="message.role === 'assistant'">
                 <span v-if="message.content" v-for="(line, lineno) in message.content.split('\n')" :key="lineno">
