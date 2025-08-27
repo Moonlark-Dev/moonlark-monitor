@@ -32,7 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBListGroup, MDBListGroupItem } from 'mdb-vue-ui-kit';
 import { formatTimeAgo } from '../utils/dateUtils';
 

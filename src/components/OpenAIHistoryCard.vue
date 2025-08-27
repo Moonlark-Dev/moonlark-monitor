@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, reactive } from 'vue';
+import { reactive } from 'vue';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBListGroup, MDBListGroupItem, MDBBadge } from 'mdb-vue-ui-kit';
 
 interface OpenAIHistory {

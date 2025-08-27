@@ -33,7 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBProgress, MDBProgressBar } from 'mdb-vue-ui-kit';
 
 interface EventCounter {
