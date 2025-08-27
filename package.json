@@ -1,8 +1,8 @@
 {
-  "name": "mdb-vue-app",
-  "version": "6.0.0",
+  "name": "moonlark-monitor",
+  "version": "1.0.0",
   "type": "module",
-  "homepage": "https://mdbootstrap.com/docs/vue/",
+  "homepage": "https://github.com/Moonlark-Dev/moonlark-monitor",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
