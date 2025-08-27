@@ -50,8 +50,9 @@
         </div>
       </div>
       
-      
-      <OpenAIHistoryCard :openaiHistory="statusReport.openai" />
+      <div class="mb-4">
+        <OpenAIHistoryCard :openaiHistory="statusReport.openai" />
+      </div>
       
       
       

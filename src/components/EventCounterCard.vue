@@ -19,7 +19,7 @@
       <div class="mt-3">
         <MDBProgress :height="20">
           <MDBProgressBar 
-            :width="(eventCounter.total > 0 ? (eventCounter.success / eventCounter.total) * 100 : 0)" 
+            :style="`width: ${(eventCounter.total > 0 ? (eventCounter.success / eventCounter.total) * 100 : 0)}%;`"
             color="success" 
             striped 
             animated

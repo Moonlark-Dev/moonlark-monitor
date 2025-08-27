@@ -3,7 +3,7 @@
     <MDBCardBody>
       <MDBCardTitle>处理器结果</MDBCardTitle>
       <MDBListGroup flush>
-        <MDBListGroupItem v-for="(handlerResult, index) in handlerResults" :key="index" class="d-flex flex-column">
+        <MDBListGroupItem v-for="(handlerResult, index) in handlerResults.toReversed()" :key="index" class="d-flex flex-column">
           <div class="d-flex justify-content-between">
             <strong>{{ handlerResult.command_name }}</strong>
             <small class="text-muted">{{ handlerResult.matcher }}</small>
