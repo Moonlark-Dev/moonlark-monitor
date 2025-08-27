@@ -27,7 +27,7 @@
                 <div v-else>
                   <div v-for="(segment, segment_index) in message.content" :key="segment">
                     <img v-if="segment.type === 'image_url'" :src="segment.image_url.url" width="100%"/>
-                    <span v-for="(line, lineno) in segment.text" v-if="segment.type === 'text'" :key="lineno" >
+                    <span v-for="(line, lineno) in segment.text.split('\n')" v-if="segment.type === 'text'" :key="lineno" >
                       <br v-if="lineno !== 0" />
                       {{ line }}
                     </span>
