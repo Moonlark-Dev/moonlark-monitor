@@ -5,7 +5,12 @@
       <MDBListGroup flush>
         <MDBListGroupItem v-for="(exception, index) in exceptions" :key="index" class="d-flex flex-column">
           <div class="d-flex justify-content-between">
-            <strong class="text-danger">{{ exception.exception }}</strong>
+            <strong class="text-danger">
+                <span v-for="(line, index) in exception.exception.split('\n')">
+                    <br v-if="index !== 0" />
+                    {{ line }}
+                </span>
+            </strong>
             <small class="text-muted">{{ formatTimeAgo(exception.timestamp) }}</small>
           </div>
           <div class="mt-1">

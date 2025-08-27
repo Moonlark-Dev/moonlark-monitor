@@ -1,7 +1,7 @@
 <template>
   <MDBCard class="h-100">
     <MDBCardBody>
-      <MDBCardTitle>插件列表</MDBCardTitle>
+      <MDBCardTitle>插件列表 ({{ plugins.length }})</MDBCardTitle>
       <MDBListGroup flush>
         <MDBListGroupItem v-for="(plugin, index) in plugins" :key="index">
           <MDBIcon icon="puzzle-piece" class="me-2 text-primary" />

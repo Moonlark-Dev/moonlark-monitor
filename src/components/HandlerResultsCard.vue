@@ -15,10 +15,12 @@
             <div v-for="(result, resultIndex) in handlerResult.result" :key="resultIndex" class="d-flex justify-content-between align-items-center mt-1">
               <span>
                 <MDBIcon 
-                  :icon="result.result === 'success' ? 'check-circle' : (result.result === 'failed' ? 'times-circle' : 'minus-circle')" 
-                  :class="result.result === 'success' ? 'text-success' : (result.result === 'failed' ? 'text-danger' : 'text-warning')"
+                  :icon="{'success': 'check-circle', 'skipped': 'minus-circle', 'failed': 'times-circle'}[result.result]"
+                  :class="{'success': 'text-success', 'skipped': 'text-warning', 'failed': 'text-danger'}[result.result]"
                 />
                 {{ result.handler.name }}
+                <span class="text-secondary">({{ result.handler.filename.split('\\').pop()?.split('/').pop() || result.handler.filename }}:{{ result.handler.lineno }} @ {{ result.handler.plugin }})</span>
+                <span v-if="result.message" class="badge bg-info">{{ result.message }}</span>
               </span>
               <small class="text-muted">{{ formatTimeAgo(result.timestamp) }}</small>
             </div>

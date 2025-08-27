@@ -20,42 +20,41 @@
     
     <!-- Main dashboard content -->
     <div v-else>
-      <!-- First row: Bot status and Event counter -->
       <div class="row mb-4">
         <div class="col-lg-8 col-md-12 mb-4 mb-lg-0">
           <BotStatusCard :bots="statusReport.bots" />
         </div>
         <div class="col-lg-4 col-md-12">
-          <EventCounterCard :eventCounter="statusReport.event_counter" />
+          <div class="mb-4">
+            <EventCounterCard :eventCounter="statusReport.event_counter" />
+          </div>
+          <div class="mb-4">
+            <CommandUsageCard :commandUsage="statusReport.command_usage" />
+          </div>
         </div>
       </div>
       
-      <!-- Second row: Exceptions and Plugins -->
-      <div class="row mb-4">
-        <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-          <ExceptionCard :exceptions="statusReport.exceptions" />
-        </div>
-        <div class="col-lg-6 col-md-12">
-          <PluginCard :plugins="statusReport.plugins" />
-        </div>
-      </div>
-      
-      <!-- Third row: Command usage and OpenAI history -->
-      <div class="row mb-4">
-        <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
-          <CommandUsageCard :commandUsage="statusReport.command_usage" />
-        </div>
-        <div class="col-lg-6 col-md-12">
-          <OpenAIHistoryCard :openaiHistory="statusReport.openai" />
-        </div>
-      </div>
-      
-      <!-- Fourth row: Handler results -->
+
       <div class="row mb-4">
         <div class="col-12">
           <HandlerResultsCard :handlerResults="statusReport.handler_results" />
         </div>
       </div>
+      
+      <div class="row mb-4">
+        <div class="col-lg-8 col-md-12 mb-4 mb-lg-0">
+          <ExceptionCard :exceptions="statusReport.exceptions" />
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <PluginCard :plugins="statusReport.plugins" />
+        </div>
+      </div>
+      
+      
+      <OpenAIHistoryCard :openaiHistory="statusReport.openai" />
+      
+      
+      
       
       <!-- Refresh button -->
       <div class="row">
