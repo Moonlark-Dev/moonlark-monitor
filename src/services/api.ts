@@ -76,13 +76,22 @@ const apiClient = axios.create({
   },
 });
 
+async function getToken(salt: string, password: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(`${password}+${salt}`);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
 // Function to fetch status report
 export const fetchStatusReport = async (): Promise<StatusReport> => {
+  const salt = (Math.random() * 1000000).toFixed(0).toString();
+  const token = await getToken(salt, import.meta.env.VITE_API_PASSWORD);
   try {
     const response = await apiClient.get('/admin/status', {
       params: {
-        token: import.meta.env.VITE_API_TOKEN,
-        salt: import.meta.env.VITE_API_SALT,
+        token, salt
       },
     });
     return response.data;
